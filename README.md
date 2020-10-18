@@ -1,5 +1,5 @@
 # About
-![Nuget](https://img.shields.io/nuget/v/Microsoft.CST.RecursiveExtractor)![Nuget](https://img.shields.io/nuget/dt/Microsoft.CST.RecursiveExtractor)
+![Nuget](https://img.shields.io/nuget/v/Microsoft.CST.RecursiveExtractor?link=https://www.nuget.org/packages/Microsoft.CST.RecursiveExtractor/&link=https://www.nuget.org/packages/Microsoft.CST.RecursiveExtractor/) ![Nuget](https://img.shields.io/nuget/dt/Microsoft.CST.RecursiveExtractor?link=https://www.nuget.org/packages/Microsoft.CST.RecursiveExtractor/&link=https://www.nuget.org/packages/Microsoft.CST.RecursiveExtractor/)
 
 Recursive Extractor is a Cross-Platform [.NET Standard 2.0 Library](#library), [Progressive Web App](#browser) and [Command Line Program](#cli) for parsing archive files and disk images, including nested archives and disk images.
 
@@ -8,7 +8,7 @@ Recursive Extractor is a Cross-Platform [.NET Standard 2.0 Library](#library), [
 |-|-|-|
 | 7zip+ | ar    | bzip2 |
 | deb   | gzip  | iso   |
-| rar^ | tar   | vhd   |
+| rar^  | tar   | vhd   |
 | vhdx  | vmdk  | wim*  |
 | xzip  | zip+  |       |
 
@@ -23,15 +23,19 @@ Recursive Extractor is a Cross-Platform [.NET Standard 2.0 Library](#library), [
 # Variants
 
 ## Browser
-You can try out Recursive Extractor [in your browser](https://microsoft.github.io/RecursiveExtractor/) as a Web Assembly app.
+You can run Recursive Extractor directly [in your browser](https://microsoft.github.io/RecursiveExtractor/) and install it as a Progressive Web App.  
+
+It runs entirely locally using [WebAssembly](https://docs.microsoft.com/en-us/aspnet/core/blazor/progressive-web-app?view=aspnetcore-3.1&tabs=visual-studio) with no connectivity requirement.
 
 ## Cli
 ### Installing
 1. Ensure you have the latest [.NET SDK](https://dotnet.microsoft.com/download).
 2. run `dotnet tool install -g Microsoft.CST.RecursiveExtractor.Cli`
 
+This adds `RecursiveExtractor` to your path so you can run it directly from the shell.
+
 ### Running
-You can now run: `RecursiveExtractor --input archive.ext --output outputDirectory`
+Basic usage is: `RecursiveExtractor --input archive.ext --output outputDirectory`
 
 <details>
 <summary>Detailed Usage</summary>
@@ -55,10 +59,13 @@ Run "RecursiveExtractor --help" for more details.
 ## Library
 Recursive Extractor is available on NuGet as [Microsoft.CST.RecursiveExtractor](https://www.nuget.org/packages/Microsoft.CST.RecursiveExtractor/).
 
+### Usage
 This code adapted from the Cli extracts the contents of given archive located at `options.Input`
 to a directory located at `options.Output`.
 
 ```csharp
+using Microsoft.CST.RecursiveExtractor;
+
 var extractor = new Extractor();
 var extractorOptions = new ExtractorOptions()
 {
@@ -70,7 +77,7 @@ extractor.ExtractToDirectory(options.Output, options.Input, extractorOptions);
 <details>
 <summary>Async Usage</summary>
 <br/>
-This example prints out all the file names found from the archive located at the path.
+This example of using the async API prints out all the file names found from the archive located at the path.
 
 ```csharp
 var path = "/Path/To/Your/Archive"
@@ -153,7 +160,7 @@ Recursive Extractor uses a number of libraries to parse archives.
 
 * [SharpZipLib](https://github.com/icsharpcode/SharpZipLib)
 * [SharpCompress](https://github.com/adamhathcock/sharpcompress)
-* [DiscUtils](https://github.com/discutils/discutils).
+* [DiscUtils](https://github.com/discutils/discutils)
 
 # Contributing
 
